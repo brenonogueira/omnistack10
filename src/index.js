@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+const cors = require('cors')
 const app = express();
 
 mongoose.connect('mongodb+srv://breno:1234@cluster0.v78bj.mongodb.net/week10?retryWrites=true&w=majority', {
@@ -8,6 +9,7 @@ mongoose.connect('mongodb+srv://breno:1234@cluster0.v78bj.mongodb.net/week10?ret
     useUnifiedTopology: true,
 })
 
+app.use(cors());
 app.use(express.json()); //fazendo express entender requisições no corpo no formato json - precisa vir antes das rotas
 app.use(routes);
 
